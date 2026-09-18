@@ -13,7 +13,7 @@ export default function ProfilePage() {
         {/* 이름 및 역할 태그 */}
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/50 mb-3">
           <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-          대학생 &bull; 바이브 코더
+          주니어 개발자 &bull; Frontend
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
@@ -22,7 +22,7 @@ export default function ProfilePage() {
 
         {/* 소개글 */}
         <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed break-keep mb-8 max-w-xs">
-          안녕하세요! 바이브 코딩을 배우고 있는 대학생입니다!
+          문제를 코드로 해결하고 직관적인 사용자 경험을 만들어가는 개발자입니다. 배움과 도전을 즐기며 꾸준히 성장하고 있습니다.
         </p>
 
         {/* 구분선 */}
