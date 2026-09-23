@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "마이링크 - MyLink",
-  description: "나만의 링크 모음 서비스, 마이링크",
+  title: "고은빈 (Eunbin Ko) | Frontend Developer & Creator",
+  description:
+    "Next.js와 Tailwind CSS로 제작한 감각적인 반응형 개인 프로필 및 프로젝트 쇼케이스 플랫폼입니다.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
