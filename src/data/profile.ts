@@ -22,6 +22,18 @@ export interface SocialLink {
   primary?: boolean;
 }
 
+export interface LinkItem {
+  id: string;
+  type: "link" | "highlight" | "header";
+  title: string;
+  subtitle?: string;
+  url?: string;
+  iconName?: string;
+  badgeText?: string;
+  isActive: boolean;
+  order: number;
+}
+
 export const PROFILE_DATA = {
   name: "고은빈",
   englishName: "Eunbin Ko",
@@ -37,6 +49,63 @@ export const PROFILE_DATA = {
     { label: "프로젝트", value: "12+" },
     { label: "기술 스택", value: "15+" },
     { label: "커밋 수", value: "480+" },
+  ],
+  links: [
+    {
+      id: "header-1",
+      type: "header",
+      title: "📂 소셜 채널",
+      isActive: true,
+      order: 1,
+    } as LinkItem,
+    {
+      id: "link-1",
+      type: "link",
+      title: "GitHub",
+      subtitle: "@godmsqls",
+      url: "https://github.com/godmsqls",
+      iconName: "github",
+      isActive: true,
+      order: 2,
+    } as LinkItem,
+    {
+      id: "link-2",
+      type: "link",
+      title: "Velog",
+      subtitle: "기술 블로그",
+      url: "https://velog.io",
+      iconName: "book-open",
+      isActive: true,
+      order: 3,
+    } as LinkItem,
+    {
+      id: "link-3",
+      type: "link",
+      title: "LinkedIn",
+      subtitle: "LinkedIn 프로필",
+      url: "https://linkedin.com",
+      iconName: "linkedin",
+      isActive: true,
+      order: 4,
+    } as LinkItem,
+    {
+      id: "header-2",
+      type: "header",
+      title: "🔥 추천 콘텐츠",
+      isActive: true,
+      order: 5,
+    } as LinkItem,
+    {
+      id: "link-4",
+      type: "highlight",
+      title: "최신 블로그 포스트",
+      subtitle: "React 19 신기능 정리",
+      url: "https://velog.io",
+      iconName: "sparkles",
+      badgeText: "HOT",
+      isActive: true,
+      order: 6,
+    } as LinkItem,
   ],
   socials: [
     {

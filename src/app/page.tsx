@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/SocialIcons";
 import { PROFILE_DATA } from "@/data/profile";
+import { LinkCard } from "@/components/LinkCard";
 
 export default function TossProfilePage() {
   const [activeTab, setActiveTab] = useState<"projects" | "skills" | "links">("projects");
@@ -353,32 +354,12 @@ export default function TossProfilePage() {
                 </p>
               </div>
 
-              <div className="divide-y divide-[#f2f4f6] mt-2">
-                {PROFILE_DATA.socials.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-between p-3.5 hover:bg-[#f9fafb] active:bg-[#f2f4f6] rounded-[16px] transition-colors"
-                  >
-                    <div className="flex items-center gap-3.5">
-                      <div className="w-10 h-10 rounded-[12px] bg-[#f2f4f6] flex items-center justify-center flex-shrink-0">
-                        {renderSocialIcon(social.icon)}
-                      </div>
-                      <div>
-                        <p className="text-[15px] font-semibold text-[#191f28]">
-                          {social.name}
-                        </p>
-                        <p className="text-[12px] text-[#8b95a1]">
-                          {social.label}
-                        </p>
-                      </div>
-                    </div>
-
-                    <ChevronRight className="w-4 h-4 text-[#b0b8c1]" />
-                  </a>
-                ))}
+              <div className="flex flex-col mt-2 px-1 pb-1">
+                {PROFILE_DATA.links
+                  .sort((a, b) => a.order - b.order)
+                  .map((link) => (
+                    <LinkCard key={link.id} link={link} />
+                  ))}
               </div>
 
               {/* 협업 문의 안내 박스 */}

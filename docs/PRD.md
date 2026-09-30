@@ -36,9 +36,9 @@
 
 ### 2.1 기술 스택
 - **프레임워크**: Next.js 16 (App Router 기반)
-- **UI 라이브러리**: React 19
+- **UI 라이브러리**: React 19, shadcn/ui 기반 커스텀 컴포넌트 (재사용성 확보)
 - **전역 상태 관리**: Zustand (`zustand`, 내장 `persist` 미들웨어 활용한 LocalStorage 자동 영속화)
-- **스타일링**: Tailwind CSS v4, Toss Design System (TDS) 디자인 토큰
+- **스타일링**: Tailwind CSS v4 단일 통일 (모듈 CSS 사용 배제), Toss Design System (TDS, design.md 참조) 디자인 토큰 적용
 - **아이콘**: Lucide React + 커스텀 SVG 소셜 아이콘
 - **데이터 저장소**: 브라우저 LocalStorage (저장 키: `'mylink_storage'`, 초기값: `profile.ts`)
 - **언어**: TypeScript (엄격한 타입 안전성 보장)

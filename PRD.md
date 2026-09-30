@@ -37,6 +37,7 @@
 ### 2.1 기술 스택
 - **프레임워크**: Next.js 16 (App Router 기반)
 - **UI 라이브러리**: React 19
+- **컴포넌트 라이브러리**: shadcn/ui (Toss Design System 스타일로 커스터마이징)
 - **전역 상태 관리**: Zustand (`zustand`, 내장 `persist` 미들웨어 활용한 LocalStorage 자동 영속화)
 - **스타일링**: Tailwind CSS v4, Toss Design System (TDS) 디자인 토큰
 - **아이콘**: Lucide React + 커스텀 SVG 소셜 아이콘
@@ -204,11 +205,15 @@ export interface ThemeConfig {
 }
 ```
 
+### 5.1 더미 데이터 (Dummy Data)
+백엔드 API 연동 전 프론트엔드 개발 및 UI 테스트를 위해 프로젝트 루트에 `mock_links.json` 파일로 링크 목록 더미 데이터를 구성해 두었습니다.
+이 파일은 백엔드 MOCK API 응답 형태(status, message, data, pagination 포함)를 모방하여 작성되었으며, 추후 `tsx` 컴포넌트 작업 및 상태 관리(Zustand) 연동 시 테스트 데이터로 활용될 예정입니다.
+
 ---
 
-## 6. UI/UX 디자인 시스템 가이드 (TDS 기반)
+## 6. UI/UX 디자인 시스템 가이드 (shadcn/ui 기반 TDS 구현)
 
-- **디자인 톤앤매너**: Toss Design System(TDS) 스타일의 모던 & 미니멀리즘
+- **디자인 톤앤매너**: shadcn/ui를 커스터마이징하여 Toss Design System(TDS) 스타일의 모던 & 미니멀리즘 구현
 - **주요 색상 토큰**:
   - `Toss Blue`: `#3182f6` (주요 CTA, 활성 인디케이터)
   - `Background`: `#f2f4f6` (페이지 배경), `#ffffff` (카드 및 서피스)
