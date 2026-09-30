@@ -54,13 +54,13 @@ export default function TossProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f2f4f6] text-[#191f28] flex flex-col items-center">
+    <div className="min-h-screen bg-[#f2f4f6] text-[#191f28]">
       
       {/* ======================================================== */}
       {/* 토스트 알림창 (TDS Toast)                                */}
       {/* ======================================================== */}
       {toastMessage && (
-        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 px-4 py-3 rounded-[14px] bg-[#191f28] text-white text-[14px] font-medium shadow-tds-toast animate-tds-fade whitespace-nowrap">
+        <div className="fixed bottom-24 lg:bottom-10 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 px-4 py-3 rounded-[14px] bg-[#191f28] text-white text-[14px] font-medium shadow-tds-toast animate-tds-fade whitespace-nowrap">
           <div className="w-5 h-5 rounded-full bg-[#04c759] flex items-center justify-center flex-shrink-0">
             <Check className="w-3.5 h-3.5 stroke-[3] text-white" />
           </div>
@@ -69,12 +69,12 @@ export default function TossProfilePage() {
       )}
 
       {/* ======================================================== */}
-      {/* 모바일 퍼스트 단일 셸 컨테이너 (최대 너비 480px)         */}
+      {/* 반응형 2단 레이아웃 (모바일 1단 스택 / 데스크톱 2단 분할) */}
       {/* ======================================================== */}
-      <div className="w-full max-w-[480px] min-h-screen bg-[#f2f4f6] pb-32 flex flex-col">
+      <div className="w-full mx-auto min-h-screen flex flex-col">
         
-        {/* 1. 상단 앱 바 (TDS TopBar, 56pt) */}
-        <header className="sticky top-0 z-30 h-14 bg-white/90 backdrop-blur-md px-5 flex items-center justify-between border-b border-[#e5e8eb]/60">
+        {/* 1. 상단 앱 바 (TDS TopBar, 56pt) - 데스크톱에서는 투명한 헤더로 전환 */}
+        <header className="sticky top-0 z-30 h-14 bg-white/90 backdrop-blur-md px-5 flex items-center justify-between border-b border-[#e5e8eb]/60 lg:max-w-[1024px] lg:mx-auto lg:w-full lg:bg-transparent lg:backdrop-blur-none lg:border-none lg:px-8 lg:pt-6 lg:pb-2">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-full bg-[#3182f6] flex items-center justify-center text-white text-[13px] font-bold">
               E
@@ -87,14 +87,18 @@ export default function TossProfilePage() {
           <button
             onClick={handleShareProfile}
             aria-label="프로필 링크 복사"
-            className="w-9 h-9 rounded-full flex items-center justify-center text-[#4e5968] hover:bg-[#f2f4f6] active:bg-[#e5e8eb] transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full flex items-center justify-center text-[#4e5968] hover:bg-[#e5e8eb] active:bg-[#d1d6db] transition-colors cursor-pointer lg:bg-white lg:shadow-sm"
           >
             <Share2 className="w-4 h-4" />
           </button>
         </header>
 
-        {/* 2. 프로필 히어로 카드 */}
-        <section className="mx-4 mt-3 mb-3 p-6 bg-white rounded-[24px] shadow-tds-1 border border-[#e5e8eb]/50">
+        {/* 메인 콘텐츠 그리드 (모바일: Stack / 데스크톱: 2-Columns Grid) */}
+        <main className="w-full max-w-[480px] lg:max-w-[1024px] mx-auto flex flex-col lg:flex-row lg:items-start lg:gap-8 lg:px-8 pt-0 lg:pt-6 pb-32 lg:pb-12">
+          
+          {/* [좌측 패널] 프로필 히어로 카드 */}
+          <div className="w-full lg:w-[360px] lg:shrink-0 lg:sticky lg:top-[88px] z-10 flex flex-col">
+            <section className="mx-4 lg:mx-0 mt-3 lg:mt-0 mb-3 lg:mb-0 p-6 bg-white rounded-[24px] shadow-tds-1 border border-[#e5e8eb]/50">
           <div className="flex items-center gap-4 mb-4">
             {/* 64px 라운드 아바타 */}
             <div className="relative w-16 h-16 rounded-[20px] overflow-hidden bg-[#f2f4f6] flex-shrink-0 border border-[#e5e8eb]">
@@ -166,9 +170,13 @@ export default function TossProfilePage() {
             </a>
           </div>
         </section>
+          </div>
 
-        {/* 3. 분절형 컨트롤 (TDS SegmentedControl) */}
-        <div className="mx-4 mb-3 p-1 bg-[#e5e8eb] rounded-[14px] flex gap-1 select-none">
+          {/* [우측 패널] 탭 컨트롤 & 콘텐츠 */}
+          <div className="w-full flex-1 flex flex-col min-w-0">
+            
+            {/* 3. 분절형 컨트롤 (TDS SegmentedControl) */}
+            <div className="mx-4 lg:mx-0 mb-3 p-1 bg-[#e5e8eb] rounded-[14px] flex gap-1 select-none">
           <button
             onClick={() => setActiveTab("projects")}
             className={`flex-1 py-2 rounded-[10px] text-[14px] font-semibold transition-all duration-150 cursor-pointer flex items-center justify-center gap-1.5 ${
@@ -211,7 +219,7 @@ export default function TossProfilePage() {
         {/* 탭 1: 프로젝트 목록 */}
         {activeTab === "projects" && (
           <div className="space-y-3 animate-tds-fade">
-            <div className="mx-4 bg-white rounded-[24px] p-5 shadow-tds-1 border border-[#e5e8eb]/50">
+            <div className="mx-4 lg:mx-0 bg-white rounded-[24px] p-5 shadow-tds-1 border border-[#e5e8eb]/50">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-[17px] font-bold text-[#191f28]">
                   대표 프로젝트
@@ -306,7 +314,7 @@ export default function TossProfilePage() {
             {PROFILE_DATA.skills.map((category) => (
               <div
                 key={category.category}
-                className="mx-4 bg-white rounded-[20px] p-5 shadow-tds-1 border border-[#e5e8eb]/50"
+                className="mx-4 lg:mx-0 bg-white rounded-[20px] p-5 shadow-tds-1 border border-[#e5e8eb]/50"
               >
                 <div className="flex items-center justify-between mb-3.5">
                   <h3 className="text-[16px] font-bold text-[#191f28]">
@@ -335,7 +343,7 @@ export default function TossProfilePage() {
         {/* 탭 3: 링크 & 소셜 채널 (TDS ListRow) */}
         {activeTab === "links" && (
           <div className="space-y-3 animate-tds-fade">
-            <div className="mx-4 bg-white rounded-[24px] p-2 shadow-tds-1 border border-[#e5e8eb]/50">
+            <div className="mx-4 lg:mx-0 bg-white rounded-[24px] p-2 shadow-tds-1 border border-[#e5e8eb]/50">
               <div className="p-3 pb-1">
                 <h3 className="text-[16px] font-bold text-[#191f28]">
                   연결된 채널
@@ -387,10 +395,12 @@ export default function TossProfilePage() {
         )}
 
         {/* 푸터 영역 */}
-        <footer className="mt-8 text-center text-[12px] text-[#8b95a1] space-y-1">
-          <p>© {new Date().getFullYear()} {PROFILE_DATA.name} ({PROFILE_DATA.englishName})</p>
-          <p className="text-[11px] text-[#b0b8c1]">토스 디자인 시스템(TDS) 스타일로 구성된 프로필입니다</p>
-        </footer>
+            <footer className="mt-8 mb-4 text-center lg:text-left text-[12px] text-[#8b95a1] space-y-1 lg:px-2">
+              <p>© {new Date().getFullYear()} {PROFILE_DATA.name} ({PROFILE_DATA.englishName})</p>
+              <p className="text-[11px] text-[#b0b8c1]">토스 디자인 시스템(TDS) 스타일로 구성된 프로필입니다</p>
+            </footer>
+          </div>
+        </main>
 
       </div>
 
@@ -398,10 +408,10 @@ export default function TossProfilePage() {
       {/* 5. 화면 최하단 고정 버튼 (TDS BottomCTA)                 */}
       {/* ======================================================== */}
       <div className="fixed bottom-0 inset-x-0 z-40 flex justify-center bottom-cta-barrier pointer-events-none">
-        <div className="w-full max-w-[480px] p-4 pointer-events-auto">
+        <div className="w-full max-w-[480px] lg:max-w-[1024px] lg:px-8 p-4 pointer-events-auto flex lg:justify-end">
           <button
             onClick={handleCopyEmail}
-            className="w-full h-14 rounded-[16px] btn-tds-primary text-[16px] font-bold flex items-center justify-center gap-2 shadow-tds-2 cursor-pointer active:scale-[0.99] transition-transform"
+            className="w-full lg:w-[320px] h-14 rounded-[16px] btn-tds-primary text-[16px] font-bold flex items-center justify-center gap-2 shadow-tds-2 cursor-pointer active:scale-[0.99] transition-transform"
           >
             <Mail className="w-4 h-4" />
             <span>이메일로 문의하기</span>
